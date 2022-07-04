@@ -1,0 +1,59 @@
+@use './variables' as *;
+
+* {
+	box-sizing: border-box;
+}
+
+.page .wp-container-7 > :where(:not(.alignleft):not(.alignright)) {
+    max-width: none;
+}
+
+.filters {
+	display: flex;
+	gap: 16px;
+	justify-content: left;
+	align-items: baseline;
+	margin-bottom: 16px;
+}
+
+.link-button {
+	background-color: transparent;
+	color: $accent-color;
+    font-size: 16px;
+	border: none;
+	cursor: pointer;
+}
+
+.note {
+	text-align: center;
+	color: #777;
+
+	span {
+		font-size: 18px;
+	}
+}
+
+.groups-and-map-container {
+	height: 640px;
+	display: flex;
+	border: 1px solid #e5e5e5;
+}
+
+.groups {
+	width: 300px;
+	background-color: #f2f2f2;
+	border-right: 1px solid #e5e5e5;
+	padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: auto;
+}
+
+.group-wrapper {
+	cursor: pointer;
+}
+
+#map {
+	flex: 1;
+}
