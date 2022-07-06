@@ -8,7 +8,11 @@ import esEnums from "./es-enums";
 
 let enumsToUse;
 
-if (document.documentElement.lang === 'es') {
+// When moving to WordPress, use the next commented condition instead of browser language
+//if (document.documentElement.lang === 'es') {
+
+// Use browser language
+if (navigator.language.startsWith('es')) {
 	enumsToUse = esEnums;
 } else {
 	enumsToUse = enEnums;

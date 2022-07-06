@@ -26,7 +26,8 @@ const enEnums = {
 		MeetingMode: "Meeting Mode",
 		GroupType: "Group Type",
 		ClearFilters: "Clear filters",
-		InfoNote: "You can select a card or a map marker to see more info.",
+		InfoNoteLeft: "On the left side is the list of the different Groups, you can click one of them or a marker on the map to see more information.",
+		InfoNoteBottom: "Under the map is the list of the different Groups, you can click one of them or a marker on the map to see more information.",
 		Loading: "Loading...",
 		NoResultsToShow: "No results to show",
 	})

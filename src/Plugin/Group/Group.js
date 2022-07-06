@@ -18,7 +18,7 @@ const Group = (props) => {
 		<div className="group">
 			<div className="top-row">
 				<div>{Country[countryCode]}</div>
-				<div className="meeting-mode">{reducedGroupType}, {MeetingMode[meetingModeCode]}</div>
+				<div className="meeting-mode"><span>{reducedGroupType},</span> <span>{MeetingMode[meetingModeCode]}</span></div>
 			</div>
 			<h2>{location}</h2>
 		</div>

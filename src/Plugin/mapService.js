@@ -26,6 +26,7 @@ class MapService {
 	#checkedCountriesObject = {};
 	#checkedMeetingModesObject = {};
 	#checkedGroupTypesObject = {};
+	#swiper;
 
 	#groups = [
 		{
@@ -156,7 +157,7 @@ class MapService {
 		const longitudeDiff = longitudes.max - longitudes.min;
 		const longitudeFraction = ((longitudeDiff < 0) ? (longitudeDiff + 360) : longitudeDiff) / 360;
 		
-		const dimensionReductionFactor = 0.7;
+		const dimensionReductionFactor = 0.4;
 		const reducedWidth = this.#mapElement.clientWidth * dimensionReductionFactor;
 		const reducedHeight = this.#mapElement.clientHeight * dimensionReductionFactor;
 
@@ -239,7 +240,7 @@ class MapService {
 		}
 	}
 
-	handleGroupAndMapChange(group) {
+	handleGroupAndMapChange(group, index) {
 		this.#map.panTo(group.mapPosition);
 		this.#mapInfoWindow.close();
 		this.#enlargeMarkerIcon(group.marker);
@@ -251,6 +252,8 @@ class MapService {
 			this.#mapInfoWindow.setContent(group.infoWindowContent);
 			this.#mapInfoWindow.open(this.#map, group.marker);
 		}, 100);
+
+		this.#swiper.slideTo(index);
 		
 		this.#context.forceUpdate();
 	}
@@ -274,7 +277,7 @@ class MapService {
 		});
 	
 		// Create markers with their click listeners
-		this.#groups.forEach(group => {
+		this.#groups.forEach((group, index) => {
 			group.marker = new window.google.maps.Marker({
 				map: this.#map,
 				icon: smallLocationIcon,
@@ -292,7 +295,7 @@ class MapService {
 	
 			// On marker click listener
 			window.google.maps.event.addListener(group.marker, 'click', () => {
-				this.handleGroupAndMapChange(group);
+				this.handleGroupAndMapChange(group, index);
 			});
 		});
 
@@ -315,6 +318,10 @@ class MapService {
 	handleGroupTypeChange(checkedOptionsObject) {
 		this.#checkedGroupTypesObject = checkedOptionsObject;
 		this.#filterGroups();
+	}
+
+	initSwiper(swiper) {
+		this.#swiper = swiper;
 	}
 
 }
